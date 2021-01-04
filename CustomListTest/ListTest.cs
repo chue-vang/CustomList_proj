@@ -4,15 +4,31 @@ using CustomList;
 
 namespace CustomListTest
 {
+    [TestMethod]
+    public void Add_AddIntToList_VerifyZeroIndex()
+    {
+        //Arrange
+        CustomList<int> testList = new CustomList<int>();
+        int number = 5;
+
+
+        //Act
+        testList.Add(number);
+
+        //Assert
+        Assert.AreEqual(number, testList[0]);
+    }
+
     [TestClass]
     public class ListTest
     {
         [TestMethod]
-        public void Add_StringToList_AddingOneString()
+        public void Add_AddStringToList_AddOneString()
         {
             //Arrange
             CustomList<string> testList = new CustomList<string>();
             string testString = "Testing string";
+
 
             //Act
             testList.Add(testString);
@@ -23,7 +39,7 @@ namespace CustomListTest
     }
 
     [TestMethod]
-    public void Add_IntToList_AddOneInt()
+    public void Add_AddIntToList_AddOneInt()
     {
         //Arrange
         CustomList<int> testList = new CustomList<int>;
@@ -34,11 +50,11 @@ namespace CustomListTest
         testList.Add(number);
 
         //Assert
-        Assert.AreEqual(expected, number[0]);
+        Assert.AreEqual(expected, testList[0]);
     }
 
     [TestMethod]
-    public void Add_MultipleIntToList_AddThreeInt()
+    public void Add_AddMultipleIntToList_AddThreeInt()
     {
         //Arange
         CustomList<int> testList = new CustomList<int>() { 1, 2, 3 };
@@ -46,8 +62,7 @@ namespace CustomListTest
 
         //Act
 
-
         //Assert
         Assert.AreEqual(expected, testList[2]);
-    }
+    }  
 }
