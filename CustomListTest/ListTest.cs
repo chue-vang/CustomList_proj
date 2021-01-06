@@ -14,7 +14,7 @@ namespace CustomListTest
             CustomList<int> testList = new CustomList<int>();
             int testNumber = 1;
             int expected = 1;
-            int actual;
+            int actual;            
 
             //Act
             testList.Add(testNumber);
