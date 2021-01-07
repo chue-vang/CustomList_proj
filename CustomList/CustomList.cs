@@ -12,25 +12,21 @@ namespace CustomList
         public T[] items;
         private int count;
         private int capacity;
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
+        public int Count 
+        { 
+            get 
+            { 
+                return count; 
+            } 
         }
-        public int Capacity
-        {
-            get
-            {
-                return capacity;
-            }
-            set
-            {
-                capacity = value;
-            }
+        public int Capacity 
+        { 
+            get 
+            { 
+                return capacity; 
+            } 
         }
-
+        //indexer
         public T this[int i]
         {
             get
@@ -42,12 +38,6 @@ namespace CustomList
                 items[i] = value;
             }
         }
-
-        //CustomList<int> myCustomList = new CustomList<int>() {1, 2, 3};
-        //myCustomList.items [1, 2, 3]
-        //myCustomList[0]
-
-
         //constructor
         public CustomList()
         {            
@@ -57,30 +47,58 @@ namespace CustomList
         }
 
         //member methods
-        //1. add item to next available index
-        //2. increment count, assuming item was added successfuly        
-        //3. if count and capacity are the same, then create more space
-        //4. use a for loop to add new items to list??
-
         public void Add(T item)
         {
             if (count == capacity)
             {
-                capacity += (capacity * 2);
-                T[] tempArray = new T[capacity];
-
+                capacity *= 2;
+                T[] tempArray = items;
+                items = new T[capacity];
+               
                 for (int i = 0; i < count; i++)
                 {
-                    tempArray[i] = item;
-                }
+                    items[i] = tempArray[i];
+                }                
                 items[count] = item;
                 count++;
             }
             else
-            {
+            {                
                 items[count] = item;
                 count++;
             }
+        }
+        //1. locate item to remove, 
+        //2.   "remove" item by shifting values over (overwrite)
+        //2. count decreases
+        //4. use a for loop to remove items from list/array???
+        public bool Remove(T item)
+        {
+            bool removeItem = false;
+            for (int i = 0; i < count; i++)
+            {
+                if(item.Equals(items[i]))
+                {
+                    //shift the item over one spot
+                    items[i] = items[i + 1];
+                    removeItem = true;
+                }
+                else
+                {
+                    //if item is already removed
+                    if (removeItem)
+                    {
+                        //then we want to shift again
+                        items[i] = items[i + 1];
+                    }
+                }
+            }
+            if (removeItem)
+            {
+                count--;
+            }
+            //decrement count only if item was removed
+            return removeItem; 
         }
     }
 }
