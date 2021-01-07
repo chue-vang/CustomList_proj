@@ -100,5 +100,17 @@ namespace CustomList
             //decrement count only if item was removed
             return removeItem; 
         }
+
+        public override string ToString()
+        {
+            string toString = "";
+            for (int i = 0; i < count; i++)
+            {
+                toString += items[i].ToString();
+            }
+            return toString;
+        }
+
+
     }
 }
