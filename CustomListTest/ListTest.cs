@@ -138,7 +138,7 @@ namespace CustomListTest
             //Arrange
             CustomList<string> testList = new CustomList<string>();
             string testString = "Testing string";
-            string expected = testString;
+            string expected = null;
             string actual;
 
             //Act
@@ -171,23 +171,69 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void Remove_RemoveItemsFromList_CapacityOfArray()
+        public void Remove_OneValueIndex_ShiftValueIndex()
         {
             //Arrange
             CustomList<int> testList = new CustomList<int>();
+            int numberOne = 1;
+            int numberTwo = 2;
+            int numberThree = 3;
+            int numberFour = 4;
+            int numberFive = 5;
             int expected = 4;
             int actual;
+
+            //Act
+            testList.Add(numberOne);
+            testList.Add(numberTwo);
+            testList.Add(numberThree);
+            testList.Add(numberFour);
+            testList.Add(numberFive);
+            testList.Remove(numberOne);
+            actual = testList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ToString_ConvertStringValue_VerifyItemConverted_ToString()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            string expected = "1";
+            string actual;
+
+            //Act
+            testList.Add(1);
+            actual = testList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ToString_MultipleValues_VerifyMultipleItemsConverted_ToString()
+        {
+            //Arange
+            CustomList<int> testList = new CustomList<int>();
+            string expected = "123456789";
+            string actual;
 
             //Act
             testList.Add(1);
             testList.Add(2);
             testList.Add(3);
             testList.Add(4);
-            testList.Remove(1);
-            actual = testList.Capacity;
+            testList.Add(5);
+            testList.Add(6);
+            testList.Add(7);
+            testList.Add(8);
+            testList.Add(9);
+            actual = testList.ToString();
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+
     }
 }
