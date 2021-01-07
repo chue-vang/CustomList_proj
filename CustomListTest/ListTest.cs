@@ -4,6 +4,7 @@ using CustomList;
 
 namespace CustomListTest
 {
+    //Unit test Add method
     [TestClass]
     public class ListTest
     {
@@ -114,7 +115,7 @@ namespace CustomListTest
             Assert.AreEqual(expected4, actual4);
         }
 
-        //Remove Test Units
+        //Unit test Remove method
         [TestMethod]
         public void Remove_RemoveIntFromList_CheckZeroIndex()
         {
@@ -195,6 +196,8 @@ namespace CustomListTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        //Unit test ToString method
         [TestMethod]
         public void ToString_ConvertStringValue_VerifyItemConverted_ToString()
         {
@@ -234,6 +237,45 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
 
+        //list of strings Hello World, empty list (assuming an empty string is returned)
 
+        //Unit test +Operator
+        [TestMethod]
+        public void OverloadPlusOperator_AddThreeItemsFromEachList_CountIsSix()
+        {
+            //Arrange
+            CustomList<int> customListOne = new CustomList<int>();
+            customListOne.Add(1);
+            customListOne.Add(3);
+            customListOne.Add(5);
+
+            CustomList<int> customListTwo = new CustomList<int>();
+            customListTwo.Add(2);
+            customListTwo.Add(4);
+            customListTwo.Add(6);
+
+            CustomList<int> result = customListOne + customListTwo;
+            int expected = 6;
+            int actual;
+
+            //Act
+            actual = result.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void OverloadPlusOperator_AddEmptyLists_CreateEmptyList()
+        {
+            //Arrange
+            CustomList<int> customListOne = new CustomList<int>();
+            CustomList<int> customListTwo = new CustomList<int>();
+
+            //Act
+            CustomList<int> result = customListOne + customListTwo;
+
+            //Assert
+            Assert.AreEqual(0, result.Count);
+        }
     }
 }
