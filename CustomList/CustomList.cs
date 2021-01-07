@@ -111,6 +111,18 @@ namespace CustomList
             return toString;
         }
 
-
+        public static CustomList<T> operator +(CustomList<T> customList, CustomList<T> customListTwo)
+        {
+            CustomList<T> result = new CustomList<T>();
+            for (int i = 0; i < customList.Count; i++)
+            {
+                result.Add(customList[i]);
+            }
+            for (int i = 0; i < customListTwo.Count; i++)
+            {
+                result.Add(customListTwo[i]);
+            }
+            return result;
+        }
     }
 }

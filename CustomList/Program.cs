@@ -10,7 +10,9 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            CustomList<int> numbers = new CustomList<int>();
+            CustomList<int> operatorTest = new CustomList<int>();
+
+            
 
 
 
