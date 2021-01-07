@@ -277,5 +277,31 @@ namespace CustomListTest
             //Assert
             Assert.AreEqual(0, result.Count);
         }
+
+        //Unit test -Operator
+        [TestMethod]
+        public void OverloadMinusOperator_DifferenceOfTwoCustomLists_CountIsTwo()
+        {
+            //Arrange
+            CustomList<int> customListOne = new CustomList<int>();
+            customListOne.Add(1);
+            customListOne.Add(3);
+            customListOne.Add(5);
+
+            CustomList<int> customListTwo = new CustomList<int>();
+            customListTwo.Add(2);
+            customListTwo.Add(1);
+            customListTwo.Add(6);
+
+            CustomList<int> result = customListOne - customListTwo;
+            int expected = 2;
+            int actual;
+
+            //Act
+            actual = result.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

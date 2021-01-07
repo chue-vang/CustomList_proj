@@ -10,17 +10,7 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            CustomList<int> operatorTest = new CustomList<int>();
 
-            
-
-
-
-            Console.ReadLine();
-
-
-            // CustomList<int> customList = new CustomList<int>();
-            // customList.Add(5);
         }
     }
 }
