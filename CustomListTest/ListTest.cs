@@ -237,28 +237,25 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
 
-        //list of strings Hello World, empty list (assuming an empty string is returned)
-
         //Unit test +Operator
         [TestMethod]
         public void OverloadPlusOperator_AddThreeItemsFromEachList_CountIsSix()
         {
             //Arrange
             CustomList<int> customListOne = new CustomList<int>();
-            customListOne.Add(1);
-            customListOne.Add(3);
-            customListOne.Add(5);
-
             CustomList<int> customListTwo = new CustomList<int>();
-            customListTwo.Add(2);
-            customListTwo.Add(4);
-            customListTwo.Add(6);
-
-            CustomList<int> result = customListOne + customListTwo;
             int expected = 6;
             int actual;
 
             //Act
+            customListOne.Add(1);
+            customListOne.Add(3);
+            customListOne.Add(5);
+            customListTwo.Add(2);
+            customListTwo.Add(4);
+            customListTwo.Add(6);
+
+            CustomList<int> result = customListOne + customListTwo;            
             actual = result.Count;
 
             //Assert
@@ -284,24 +281,48 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<int> customListOne = new CustomList<int>();
+            CustomList<int> customListTwo = new CustomList<int>();
+            int expected = 2;
+            int actual;
+
+            //Act
             customListOne.Add(1);
             customListOne.Add(3);
-            customListOne.Add(5);
-
-            CustomList<int> customListTwo = new CustomList<int>();
+            customListOne.Add(5);            
             customListTwo.Add(2);
             customListTwo.Add(1);
             customListTwo.Add(6);
 
             CustomList<int> result = customListOne - customListTwo;
-            int expected = 2;
-            int actual;
-
-            //Act
             actual = result.Count;
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        //Unit test Zip method
+        //[TestMethod]
+        //public void Zip_BothListsCountAreEqual_ListCountIsSix()
+        //{
+        //    //Arrange
+        //    CustomList<int> customListOne = new CustomList<int>();
+        //    CustomList<int> customListTwo = new CustomList<int>();
+        //    int expected = 6;
+        //    int actual;
+
+        //    //Act
+        //    customListOne.Add(1);
+        //    customListOne.Add(3);
+        //    customListOne.Add(5);
+        //    customListTwo.Add(2);
+        //    customListTwo.Add(4);
+        //    customListTwo.Add(6);
+
+        //    CustomList<int> result = customListOne.Zip(customListTwo);
+        //    actual = result.Count;
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }

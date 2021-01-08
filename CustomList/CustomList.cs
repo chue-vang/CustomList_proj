@@ -69,10 +69,7 @@ namespace CustomList
                 count++;
             }
         }
-        //1. locate item to remove, 
-        //2.   "remove" item by shifting values over (overwrite)
-        //2. count decreases
-        //4. use a for loop to remove items from list/array???
+
         public bool Remove(T item)
         {
             bool removeItem = false;
@@ -80,16 +77,13 @@ namespace CustomList
             {
                 if(item.Equals(items[i]))
                 {
-                    //shift the item over one spot
                     items[i] = items[i + 1];
                     removeItem = true;
                 }
                 else
                 {
-                    //if item is already removed
                     if (removeItem)
                     {
-                        //then we want to shift again
                         items[i] = items[i + 1];
                     }
                 }
@@ -98,7 +92,6 @@ namespace CustomList
             {
                 count--;
             }
-            //decrement count only if item was removed
             return removeItem; 
         }
 
@@ -143,6 +136,20 @@ namespace CustomList
                 result.Remove(item);
             }
             return result;
-        }        
+        }
+
+        public CustomList<T> Zip(CustomList<T> customList, CustomList<T> customListTwo)
+        {
+            CustomList<T> result = new CustomList<T>();
+            if (Count == customListTwo.Count)
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    result.Add(customList[i]);
+                    result.Add(customListTwo[i]);
+                }
+            }
+            return result;
+        }
     }
 }
